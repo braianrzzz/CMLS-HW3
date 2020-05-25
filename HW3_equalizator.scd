@@ -1,5 +1,5 @@
 //~song = Buffer.read(s, "/Users/Camillo/Desktop/Canz 10-03/Audio.wav")
-~song = Buffer.read(s, "/Users/Camillo/Desktop/CAAAANZ/Black Sabbath/The Ultimate Collection Disc 1/Audio.wav")
+~song = Buffer.read(s, "D:/Download firefox/Pinguini_Tattici_Nucleari_Tetris.wav")
 
 //EQUALIZER WITH SYNTHDEF
 
@@ -20,6 +20,9 @@ SynthDef(\song,
 ).add;
 )
 
+l=~song.path.length;
+p=~song.path.copySeries(20,21,l);
+
 
 ~synth1 = Synth(\song,[\lowbound,250,\highbound,2000]);
 
@@ -29,18 +32,20 @@ SynthDef(\song,
 
 //GUI
 (
-var w, btnBass, btnMid, btnTreble;
-w = Window("My Window", Rect(100,100,250,200));
+var w, btnBass, btnMid, btnTreble, title;
+w = Window("My Window", Rect(100,100,250,300));
 
 b = Bus.audio(s,1); // this will be our effects bus
 
 btnBass = Button(parent:w, bounds:Rect(20, 160, 210, 30));
-btnMid = Button(parent:w, bounds:Rect(10,10,100,100));
+btnMid = Button(parent:w, bounds:Rect(10, 10, 100, 100));
 btnTreble = Button(parent:w, bounds:Rect(130,10,100,100));
+title = StaticText(parent:w,bounds:Rect(40,170,200,200));
 
-btnBass.string = "Bass";
-btnMid.string = "Mid";
-btnTreble.string = "Treble";
+//btnBass.string = "Bass";
+//btnMid.string = "Mid";
+//btnTreble.string = "Treble";
+title.string=p;
 
 btnBass.action_({
 	arg butt, mod;
