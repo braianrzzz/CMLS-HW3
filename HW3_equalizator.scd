@@ -79,7 +79,7 @@ w=Window("Response", Rect(100,100,500,500));
 
 
 f=FreqScopeView.response(w,Rect(50,50,700,700),~c,~b);
-f=FreqScopeView(w,Rect(50,50,700,700),s);/
+f=FreqScopeView(w,Rect(50,50,700,700),s);
 f.active_(true);
 
 w.onClose_({ f.kill }); // you must have this
